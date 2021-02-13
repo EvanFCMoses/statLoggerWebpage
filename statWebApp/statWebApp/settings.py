@@ -25,7 +25,7 @@ SECRET_KEY = 'ipffbba=-y40^pe97f&p2g+=*&lrw$j!!f%1n_o2l&-+88*3x#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['impromptumachinactions.us','157.230.53.34', 'localhost']
 
 
 # Application definition
@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'statWebApp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.path.join(BASE_DIR, 'db.postgresql'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'statloggerwebpage',
+	'USER': 'statloggerwebpageuser',
+	'PASSWORD': 'OZ09ibSdzPvFvX4aZ6GsP4VbDF',
+	'HOST': 'localhost',
+	'PORT': '',
     }
 }
 
@@ -118,3 +122,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
