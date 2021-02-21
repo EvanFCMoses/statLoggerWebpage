@@ -54,7 +54,9 @@ ROOT_URLCONF = 'statWebApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'encounter/templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
