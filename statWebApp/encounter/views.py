@@ -1,5 +1,5 @@
 from django.shortcuts import render
-drom django.views import View
+from django.views import View
 
 class Index(View):
 	template = 'index.html'
