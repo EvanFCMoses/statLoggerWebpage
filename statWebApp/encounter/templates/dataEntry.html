@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin</title>
+        <link href="{% static "encounter/css/styles.css" %}" rel="stylesheet" />
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <div id="layoutSidenav_content">
+            <p>
+                <span float:left>
+                    <form action="/action_page.php">
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label>
+                    </form>
+                    <input class="form-control" type="text" aria-label="Age" aria-describedby="basic-addon2" />
+                </span>
+                <span float:left>
+                    <form action="/action_page.php">
+                        <input type="radio" id="clinic" name="clinicLocation" value="clinic">
+                        <label for="clinic">clinic</label>
+                        <input type="radio" id="outPatient" name="clinicLocation" value="outPatient">
+                        <label for="outPatient">outPatient</label>
+                    </form>
+                    <form action="/action_page.php">
+                        <input type="radio" id="followUp" name="followUpVsOutpatient" value="followUp">
+                        <label for="clinic">followUp</label>
+                        <input type="radio" id="newPatient" name="followUpVsOutpatient" value="newPatient">
+                        <label for="newPatient">new</label>
+                    </form>
+                </span>
+                <span float:left>
+                    <p>
+                        <span float:left>
+                            <label>Sort By</label>
+                            <button class="btnSortByName">Name</button>
+                            <button class="btnSortByFrequency">Frequency</button>
+                        </span>
+                        <select name="MaladiesToChoose" size="5">
+                            <option value="Malaria"> Malaria </option>
+                            <option value="Mumps"> Mumps </option>
+                            <option value="Woozles"> Woozles </option>
+                            <option value="Dizzy"> Dizzy </option>
+                            <option value="LovingYou"> Loving You </option>
+                            <option value="Unsure"> Unsure </option>
+                        </select>
+                        <span float:left>
+                            <input class="form-control" type="text" aria-label="Search/Add To List" aria-describedby="basic-addon2" />
+                            <button class="btnAddMaladiesToChoice">Add To List</button>
+                        </span>
+                    </p>
+                    <button class="btnAddMaladies">Add</button>
+                    <p>
+                        <label>List of Dx</label>
+                        <select name="MaladiesChosen" size="5">
+                            <option value="Malaria"> Malaria </option>
+                            <option value="Unselected1">  </option>
+                            <option value="Unselected2">  </option>
+                            <option value="Unselected3">  </option>
+                            <option value="Unselected4">  </option>
+                            <option value="Unselected5">  </option>
+                        </select>
+                        <button class="btnDeleteChosenMaladie"></button>
+                    </p>
+                </span>
+                <span float:left>
+                    <label>Procedure</label>
+                    <form action="/action_page.php">
+                        <input type="radio" id="perform" name="rolePlayed" value="perform">
+                        <label for="perform">Perform</label>
+                        <input type="radio" id="assist" name="rolePlayed" value="assist">
+                        <label for="assist">Assist</label>
+                    </form>
+                </span>
+                <span float:left>
+                    <label>Notes</label>
+                    <input class="form-control" type="text" aria-label="Free Text" aria-describedby="basic-addon2" />
+                </span>
+                <button class="btnSubmit">Submit</button>
+            </p>
+            
+        </div>
+    </body>
+</html>

@@ -10005,6 +10005,10 @@ body {
   height: 100%;
 }
 
+span {
+  display: inline-block;
+}
+
 .container,
 .container-fluid,
 .container-sm,
@@ -10247,3 +10251,4 @@ body {
 .sb-sidenav-light .sb-sidenav-footer {
   background-color: #e9ecef;
 }
+
