@@ -6,3 +6,10 @@ class Index(View):
 
 	def get(self, request):
 		return render(request, self.template)
+
+
+class DataEntry(View):
+	template = 'dataEntry.html'
+
+	def get(self, request):
+		return render(request, self.template)
