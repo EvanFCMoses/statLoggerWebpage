@@ -32,26 +32,30 @@
                             </div>
                         </div>
                         <div class="col-sm">
-                            <div class="mb-3">
-                                <label for="ageInput" class="form-label"></label>
-                                <input type="number" class="form-control" id="ageInput"></div>
-                            </div>
+                            <label for="ageInput" class="form-label"></label>
+                            <input type="number" class="form-control" id="ageInput"></div>
                         </div>
                     </div>
                 </div>
                 <div class="container-fluid">
-                    <form action="/action_page.php">
-                        <input type="radio" id="clinic" name="clinicLocation" value="clinic">
-                        <label for="clinic">clinic</label>
-                        <input type="radio" id="outPatient" name="clinicLocation" value="outPatient">
-                        <label for="outPatient">outPatient</label>
-                    </form>
-                    <form action="/action_page.php">
-                        <input type="radio" id="followUp" name="followUpVsOutpatient" value="followUp">
-                        <label for="clinic">followUp</label>
-                        <input type="radio" id="newPatient" name="followUpVsOutpatient" value="newPatient">
-                        <label for="newPatient">new</label>
-                    </form>
+                    <div class="d-flex justify-content-center">
+                        <div class="col-sm">
+                            <form action="/action_page.php">
+                                <input type="radio" id="clinic" name="clinicLocation" value="clinic">
+                                <label for="clinic">clinic</label>
+                                <input type="radio" id="outPatient" name="clinicLocation" value="outPatient">
+                                <label for="outPatient">outPatient</label>
+                            </form>
+                        </div>
+                        <div class="col-sm">
+                            <form action="/action_page.php">
+                                <input type="radio" id="followUp" name="followUpVsOutpatient" value="followUp">
+                                <label for="clinic">followUp</label>
+                                <input type="radio" id="newPatient" name="followUpVsOutpatient" value="newPatient">
+                                <label for="newPatient">new</label>
+                            </form>
+                        </div>
+                    </div>      
                 </div>
                 <div class="container-fluid">
                     <p>
