@@ -79,38 +79,42 @@
                     </div>      
                 </div>
                 <div class="container-fluid">
-                    <p>
-                        <div class="container-fluid">
-                            <label>Sort By</label>
-                            <button class="btnSortByName">Name</button>
-                            <button class="btnSortByFrequency">Frequency</button>
+                    <div class="d-flex justify-content-center">
+                        <div class="col-sm">
+                            <div class="container-fluid">
+                                <label>Sort By</label>
+                                <button class="btnSortByName">Name</button>
+                                <button class="btnSortByFrequency">Frequency</button>
+                            </div>
+                            <select name="MaladiesToChoose" size="5">
+                                <option value="Malaria"> Malaria </option>
+                                <option value="Mumps"> Mumps </option>
+                                <option value="Woozles"> Woozles </option>
+                                <option value="Dizzy"> Dizzy </option>
+                                <option value="LovingYou"> Loving You </option>
+                                <option value="Unsure"> Unsure </option>
+                            </select>
+                            <div class="container-fluid">
+                                <input class="form-control" type="text" aria-label="Search/Add To List" aria-describedby="basic-addon2" />
+                                <button class="btnAddMaladiesToChoice">Add To List</button>
+                            </div>
                         </div>
-                        <select name="MaladiesToChoose" size="5">
-                            <option value="Malaria"> Malaria </option>
-                            <option value="Mumps"> Mumps </option>
-                            <option value="Woozles"> Woozles </option>
-                            <option value="Dizzy"> Dizzy </option>
-                            <option value="LovingYou"> Loving You </option>
-                            <option value="Unsure"> Unsure </option>
-                        </select>
-                        <div class="container-fluid">
-                            <input class="form-control" type="text" aria-label="Search/Add To List" aria-describedby="basic-addon2" />
-                            <button class="btnAddMaladiesToChoice">Add To List</button>
+                        <div class="col-sm">
+                            <button class="btnAddMaladies">Add</button>
                         </div>
-                    </p>
-                    <button class="btnAddMaladies">Add</button>
-                    <p>
-                        <label>List of Dx</label>
-                        <select name="MaladiesChosen" size="5">
-                            <option value="Malaria"> Malaria </option>
-                            <option value="Unselected1">  </option>
-                            <option value="Unselected2">  </option>
-                            <option value="Unselected3">  </option>
-                            <option value="Unselected4">  </option>
-                            <option value="Unselected5">  </option>
-                        </select>
-                        <button class="btnDeleteChosenMaladie"></button>
-                    </p>
+                        <div class="col-sm">
+                            <label>List of Dx</label>
+                            <select name="MaladiesChosen" size="5">
+                                <option value="Malaria"> Malaria </option>
+                                <option value="Unselected1">  </option>
+                                <option value="Unselected2">  </option>
+                                <option value="Unselected3">  </option>
+                                <option value="Unselected4">  </option>
+                                <option value="Unselected5">  </option>
+                            </select>
+                            <button class="btnDeleteChosenMaladie"></button>
+                        </div>
+                    </div>
                 </div>
                 <div class="container-fluid">
                     <label>Procedure</label>
