@@ -86,13 +86,16 @@
                                 <button class="btnSortByName">Name</button>
                                 <button class="btnSortByFrequency">Frequency</button>
                             </div>
-                            <select name="MaladiesToChoose" size="5">
-                                <option value="Malaria"> Malaria </option>
-                                <option value="Mumps"> Mumps </option>
-                                <option value="Woozles"> Woozles </option>
-                                <option value="Dizzy"> Dizzy </option>
-                                <option value="LovingYou"> Loving You </option>
-                                <option value="Unsure"> Unsure </option>
+                            <ul class="list-group" name="MaladiesToChoose">
+                                <li class ="list-group-item">
+					<input class="form-check-input me-1" type="checkbox" value="Malaria">
+					Malaria
+				</li>
+                                <li value="Mumps"> Mumps </li>
+                                <li value="Woozles"> Woozles </li>
+                                <li value="Dizzy"> Dizzy </li>
+                                <li value="LovingYou"> Loving You </li>
+                                <li value="Unsure"> Unsure </li>
                             </select>
                             <div class="container-fluid">
                                 <input class="form-control" type="text" aria-label="Search/Add To List" aria-describedby="basic-addon2" />
