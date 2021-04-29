@@ -34,12 +34,12 @@
                         <div class="col-sm px-3">
                             <div class="d-flex justify-content-center">
                                 <div class="col-sm">
-                                    <label for="ageInput" class="form-label pe-1">Age:</label>
+                                    <label for="ageInput" class="form-label pe-1">Age:</>
+				</div>
+				<div class="col-sm">
+			            <input class="form-control" type="number" inputmode="decimal"></>
                                 </div>
-                                <div class="col-sm">
-                                    <input type="number" class="form-control" id="ageInput">
-                                </div>
-                            </div>
+                             </div>
                         </div>
                     </div>
                 </div>
@@ -82,15 +82,15 @@
                     <div class="d-flex justify-content-center">
                         <div class="col-sm">
                             <div class="container-fluid">
-                                <label>Sort By</label>
-                                <button class="btnSortByName">Name</button>
-                                <button class="btnSortByFrequency">Frequency</button>
+                                <label>Sort</label>
+                                <button class="btn btn-primary btn-sm">Name</button>
+                                <button class="btn btn-primary btn-sm">Freq</button>
                             </div>
                             <ul class="list-group" name="MaladiesToChoose">
                                 <li class="list-group-item">
-                					<input class="form-check-input me-1" type="checkbox" value="Malaria">
-                					Malaria
-				                </li>
+					<input class="form-check-input me-1" type="checkbox" value="Malaria">
+                			Malaria
+				</li>
                                 <li class="list-group-item"> 
                                     <input class="form-check-input me-1" type="checkbox" value="Mumps">
                                     Mumps 
@@ -114,11 +114,15 @@
                             </select>
                             <div class="container-fluid">
                                 <input class="form-control" type="text" aria-label="Search/Add To List" aria-describedby="basic-addon2" />
-                                <button class="btnAddMaladiesToChoice">Add To List</button>
+				<div class="container-fluid d-flex align-content-center justify-content-center">
+                                	<button type="button" class="btn btn-primary align-self-center">Add To List</button>
+				</div>
                             </div>
                         </div>
-                        <div class="col-sm">
-                            <button class="btnAddMaladies">Add</button>
+                        <div class="col-sm align-self-center">
+			    <div class="container-fluid d-flex align-content-center justify-content-center">
+                            	<button type="button" class="btn btn-primary">Add</button>
+			    </div>
                         </div>
                         <div class="col-sm">
                             <label>List of Dx</label>
@@ -128,7 +132,7 @@
                                     Malaria 
                                 </li>
                             </ul>
-                            <button class="btnDeleteChosenMaladie">Remove</button>
+                            <button class="btn btn-primary">Remove</button>
                         </div>
                     </div>
                 </div>
@@ -145,7 +149,7 @@
                     <label>Notes</label>
                     <input class="form-control" type="text" aria-label="Free Text" aria-describedby="basic-addon2" />
                 </div>
-                <button class="btnSubmit">Submit</button>
+                <button class="btn btn-primary btn-lg">Submit</button>
             </p>
             
         </div>
