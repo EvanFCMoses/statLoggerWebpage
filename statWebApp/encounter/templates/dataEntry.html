@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% load static %}
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
-        <link href="{% static "encounter/css/styles.css" %}" rel="stylesheet" />
-        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css'%}">
-        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="sb-nav-fixed">
-        <div id="layoutSidenav_content">
-            <div class="container-fluid">
-                <div class="d-flex justify-content-center">
-                    <div class="col-sm px-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="genderIndicationMale" name="gender">
-                            <label class="form-check-label" for="genderIndicationMale">Male</label>
-                        </div>
+{% load static %}
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin</title>
+    <link href="{% static "encounter/css/styles.css" %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css'%}">
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body class="sb-nav-fixed">
+    <div id="layoutSidenav_content">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-center">
+                <div class="col-sm px-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="genderIndicationMale" name="gender">
+                        <label class="form-check-label" for="genderIndicationMale">Male</label>
                     </div>
-                    <div class="col-sm px-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="genderIndicationFemale" name="gender">
-                            <label class="form-check-label" for="genderIndicationFemale">Female</label>
-                        </div>
+                </div>
+                <div class="col-sm px-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="genderIndicationFemale" name="gender">
+                        <label class="form-check-label" for="genderIndicationFemale">Female</label>
                     </div>
-                    <div class="col-sm px-3">
-                        <div class="d-flex justify-content-center">
-                            <div class="col-sm">
-                                <label for="ageInput" class="form-label pe-1">Age:</>
+                </div>
+                <div class="col-sm px-3">
+                    <div class="d-flex justify-content-center">
+                        <div class="col-sm">
+                            <label for="ageInput" class="form-label pe-1">Age:</label>
                             </div>
                             <div class="col-sm">
                                 <input class="form-control" type="number" inputmode="decimal"></>
@@ -74,51 +74,51 @@
                                     <label class="form-check-label "for="newPatient">new</label>
                                 </div>
                             </div>
-                    </div>
-                </div>      
-            </div>
-            <div class="container-fluid">
-                <div class="d-flex justify-content-center">
-                    <div class="col-sm">
-                        <div class="container-fluid">
-                            <label>Sort</label>
-                            <button class="btn btn-primary btn-sm">Name</button>
-                            <button class="btn btn-primary btn-sm">Freq</button>
                         </div>
-                        <ul class="list-group" name="MaladiesToChoose">
-                            <li class="list-group-item">
-				                <input class="form-check-input me-1" type="checkbox" value="Malaria">
-            			         Malaria
-                            </li>
-                            <li class="list-group-item"> 
-                                <input class="form-check-input me-1" type="checkbox" value="Mumps">
-                                Mumps 
-                            </li>
-                            <li class="list-group-item"> 
-                                <input class="form-check-input me-1" type="checkbox" value="Woozles">
-                                Woozles 
-                            </li>
-                            <li class="list-group-item"> 
-                                <input class="form-check-input me-1" type="checkbox" value="Dizzy">
-                                Dizzy 
-                            </li>
-                            <li class="list-group-item"> 
-                                <input class="form-check-input me-1" type="checkbox" value="Loving You">
-                                Loving You 
-                            </li>
-                            <li class="list-group-item"> 
-                                <input class="form-check-input me-1" type="checkbox" value="Unsure">
-                                Unsure 
-                            </li>
-                        </ul>
-                        <div class="container-fluid">
-                            <input class="form-control" type="text" aria-label="Search/Add To List" aria-describedby="basic-addon2" />
-			                 <div class="container-fluid d-flex align-content-center justify-content-center">
-                            	<button type="button" class="btn btn-primary align-self-center">Add To List</button>
-			                 </div>
-                        </div>
-                    </div>
-                    <div class="col-sm align-self-center">
+                    </div>      
+                </div>
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-center">
+                        <div class="col-sm">
+                            <div class="container-fluid">
+                                <label>Sort</label>
+                                <button class="btn btn-primary btn-sm">Name</button>
+                                <button class="btn btn-primary btn-sm">Freq</button>
+                            </div>
+                            <ul class="list-group" name="MaladiesToChoose">
+                                <li class="list-group-item">
+                                    <input class="form-check-input me-1" type="checkbox" value="Malaria">
+                                    Malaria
+                                </li>
+                                <li class="list-group-item"> 
+                                    <input class="form-check-input me-1" type="checkbox" value="Mumps">
+                                    Mumps 
+                                </li>
+                                <li class="list-group-item"> 
+                                    <input class="form-check-input me-1" type="checkbox" value="Woozles">
+                                    Woozles 
+                                </li>
+                                <li class="list-group-item"> 
+                                    <input class="form-check-input me-1" type="checkbox" value="Dizzy">
+                                    Dizzy 
+                                </li>
+                                <li class="list-group-item"> 
+                                    <input class="form-check-input me-1" type="checkbox" value="Loving You">
+                                    Loving You 
+                                </li>
+                                <li class="list-group-item"> 
+                                    <input class="form-check-input me-1" type="checkbox" value="Unsure">
+                                    Unsure 
+                                </li>
+                            </ul>
+                            <div class="container-fluid">
+                                <input class="form-control" type="text" aria-label="Search/Add To List" aria-describedby="basic-addon2" />
+                                <div class="container-fluid d-flex align-content-center justify-content-center">
+                                 <button type="button" class="btn btn-primary align-self-center">Add To List</button>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-sm align-self-center">
                         <div class="container-fluid d-flex align-content-center justify-content-center">
                         	<button type="button" class="btn btn-primary">Add</button>
                         </div>
@@ -141,26 +141,27 @@
                         <label>Procedure</label>
                     </div>
                     <div class="col-sm px-3">
-			<div class="form-check">
-        	        	<input class="form-check-input" type="radio" id="perform" name="rolePlayed">
-                		<label class="form-check-label" for="perform">Perform</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="perform" name="rolePlayed">
+                            <label class="form-check-label" for="perform">Perform</label>
                         </div>
-		</div>
-		<div class="col-sm px-3">
-			<div class="form-check">
-				<input class="form-check-input" type="radio" id="assist" name="rolePlayed">
-                            	<label class="form-check-label" for="assist">Assist</label>
+                    </div>
+                    <div class="col-sm px-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="assist" name="rolePlayed">
+                            <label class="form-check-label" for="assist">Assist</label>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="notesFormControlTextArea">Notes</label>
-                <textarea class="form-control" type="text" id="notesFormControlTextArea" rows=3</>
+                <textarea class="form-control" type="text" id="notesFormControlTextArea" rows=3/>
             </div>
-	<div class="justify-content-center">
-            <button class="btn btn-primary btn-lg">Submit</button>
-	</div>
+            <div class="justify-content-center">
+                <button class="btn btn-primary btn-lg">Submit</button>
+            </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
