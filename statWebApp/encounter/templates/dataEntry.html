@@ -141,24 +141,26 @@
                         <label>Procedure</label>
                     </div>
                     <div class="col-sm px-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="genderIndicationMale" name="gender">
-                            <label class="form-check-label" for="genderIndicationMale">Male</label>
+			<div class="form-check">
+        	        	<input class="form-check-input" type="radio" id="perform" name="rolePlayed">
+                		<label class="form-check-label" for="perform">Perform</label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="perform" name="rolePlayed">
-                            <label class="form-check-label" for="perform">Perform</label>
-                            <input class="form-check-input" type="radio" id="assist" name="rolePlayed">
-                            <label class="form-check-label" for="assist">Assist</label>
+		</div>
+		<div class="col-sm px-3">
+			<div class="form-check">
+				<input class="form-check-input" type="radio" id="assist" name="rolePlayed">
+                            	<label class="form-check-label" for="assist">Assist</label>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container-fluid">
-                <label>Notes</label>
-                <input class="form-control" type="text" aria-label="Free Text" aria-describedby="basic-addon2" />
+            <div class="form-group">
+                <label for="notesFormControlTextArea">Notes</label>
+                <textarea class="form-control" type="text" id="notesFormControlTextArea" rows=3</>
             </div>
+	<div class="justify-content-center">
             <button class="btn btn-primary btn-lg">Submit</button>
+	</div>
         </div>
     </body>
 </html>
