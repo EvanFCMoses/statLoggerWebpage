@@ -16,154 +16,157 @@
 </head>
 <body class="sb-nav-fixed">
     <div id="layoutSidenav_content">
-        <div class="container-fluid">
-            <div class="d-flex justify-content-center mt-2 mb-2">
-                <div class="col-sm px-3">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" id="genderIndicationMale" name="gender">
-                        <label class="form-check-label" for="genderIndicationMale">Male</label>
-                    </div>
-                </div>
-                <div class="col-sm px-3">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" id="genderIndicationFemale" name="gender">
-                        <label class="form-check-label" for="genderIndicationFemale">Female</label>
-                    </div>
-                </div>
-                <div class="col-sm px-3">
-                    <div class="d-flex justify-content-center">
-                        <div class="col-sm">
-                            <label for="ageInput" class="form-label pe-1">Age:</label>
-                            </div>
-                            <div class="col-sm">
-                                <input class="form-control" type="number" inputmode="decimal"></>
-                            </div>
+        <form action="{% url 'encounter:process' %}" method="post">
+            {% csrf_token %}
+            <div class="container-fluid">
+                <div class="d-flex justify-content-center mt-2 mb-2">
+                    <div class="col-sm px-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="genderIndicationMale" name="gender">
+                            <label class="form-check-label" for="genderIndicationMale">Male</label>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="container-fluid mb-2">
-                <div class="d-flex justify-content-center">
+                    <div class="col-sm px-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="genderIndicationFemale" name="gender">
+                            <label class="form-check-label" for="genderIndicationFemale">Female</label>
+                        </div>
+                    </div>
                     <div class="col-sm px-3">
                         <div class="d-flex justify-content-center">
-                            <div class="col-sm px-1">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" id="clinic" name="clinicLocation" value="clinic">
-                                    <label class="form-check-label" for="clinic">clinic</label>
+                            <div class="col-sm">
+                                <label for="ageInput" class="form-label pe-1">Age:</label>
                                 </div>
-                            </div>
-                            <div class="col-sm px-1">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" id="outPatient" name="clinicLocation" value="outPatient">
-                                    <label class="form-check-label" for="outPatient">outPatient</label>
+                                <div class="col-sm">
+                                    <input class="form-control" type="number" inputmode="decimal"></>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm mb-3">
-                        <div class="d-flex justify-content-center">
-                            <div class="col-sm px-1">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" id="followUp" name="followUpVsOutpatient" value="followUp">
-                                    <label class="form-check-label" for="clinic">followUp</label>
+                </div>
+                <div class="container-fluid mb-2">
+                    <div class="d-flex justify-content-center">
+                        <div class="col-sm px-3">
+                            <div class="d-flex justify-content-center">
+                                <div class="col-sm px-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="clinic" name="clinicLocation" value="clinic">
+                                        <label class="form-check-label" for="clinic">clinic</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm px-1">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" id="newPatient" name="followUpVsOutpatient" value="newPatient">
-                                    <label class="form-check-label "for="newPatient">new</label>
+                                <div class="col-sm px-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="outPatient" name="clinicLocation" value="outPatient">
+                                        <label class="form-check-label" for="outPatient">outPatient</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>      
+                        <div class="col-sm mb-3">
+                            <div class="d-flex justify-content-center">
+                                <div class="col-sm px-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="followUp" name="followUpVsOutpatient" value="followUp">
+                                        <label class="form-check-label" for="clinic">followUp</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm px-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="newPatient" name="followUpVsOutpatient" value="newPatient">
+                                        <label class="form-check-label "for="newPatient">new</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>      
+                    </div>
+                    <div class="container-fluid">
+                        <div class="d-flex justify-content-center">
+                            <div class="col-sm mb-1">
+                                <div class="container-fluid mb-1">
+                                    <label>Sort</label>
+                                    <button class="btn btn-primary btn-sm">Name</button>
+                                    <button class="btn btn-primary btn-sm">Freq</button>
+                                </div>
+                                <ul class="list-group mb-2" name="MaladiesToChoose">
+                                    <li class="list-group-item">
+                                        <input class="form-check-input me-1" type="checkbox" value="Malaria">
+                                        Malaria
+                                    </li>
+                                    <li class="list-group-item"> 
+                                        <input class="form-check-input me-1" type="checkbox" value="Mumps">
+                                        Mumps 
+                                    </li>
+                                    <li class="list-group-item"> 
+                                        <input class="form-check-input me-1" type="checkbox" value="Woozles">
+                                        Woozles 
+                                    </li>
+                                    <li class="list-group-item"> 
+                                        <input class="form-check-input me-1" type="checkbox" value="Dizzy">
+                                        Dizzy 
+                                    </li>
+                                    <li class="list-group-item"> 
+                                        <input class="form-check-input me-1" type="checkbox" value="Loving You">
+                                        Loving You 
+                                    </li>
+                                    <li class="list-group-item"> 
+                                        <input class="form-check-input me-1" type="checkbox" value="Unsure">
+                                        Unsure 
+                                    </li>
+                                </ul>
+                                <div class="container-fluid">
+                                    <input class="form-control mb-1" type="text" aria-label="Search/Add To List" aria-describedby="basic-addon2" />
+                                    <div class="container-fluid d-flex align-content-center justify-content-center">
+                                     <button type="button" class="btn btn-primary align-self-center">Add To List</button>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-sm align-self-center">
+                            <div class="container-fluid d-flex align-content-center justify-content-center">
+                            	<button type="button" class="btn btn-primary">Add</button>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <label>List of Dx</label>
+                            <ul class="list-group mb-2" name="MaladiesChosen">
+                                <li class="list-group-item">
+                                    <input class="form-check-input me-1" type="checkbox" value="Malaria"> 
+                                    Malaria 
+                                </li>
+                            </ul>
+                            <button class="btn btn-primary">Remove</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
-                        <div class="col-sm mb-1">
-                            <div class="container-fluid mb-1">
-                                <label>Sort</label>
-                                <button class="btn btn-primary btn-sm">Name</button>
-                                <button class="btn btn-primary btn-sm">Freq</button>
+                        <div class="col-sm px-3">
+                            <label>Procedure</label>
+                        </div>
+                        <div class="col-sm px-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="perform" name="rolePlayed">
+                                <label class="form-check-label" for="perform">Perform</label>
                             </div>
-                            <ul class="list-group mb-2" name="MaladiesToChoose">
-                                <li class="list-group-item">
-                                    <input class="form-check-input me-1" type="checkbox" value="Malaria">
-                                    Malaria
-                                </li>
-                                <li class="list-group-item"> 
-                                    <input class="form-check-input me-1" type="checkbox" value="Mumps">
-                                    Mumps 
-                                </li>
-                                <li class="list-group-item"> 
-                                    <input class="form-check-input me-1" type="checkbox" value="Woozles">
-                                    Woozles 
-                                </li>
-                                <li class="list-group-item"> 
-                                    <input class="form-check-input me-1" type="checkbox" value="Dizzy">
-                                    Dizzy 
-                                </li>
-                                <li class="list-group-item"> 
-                                    <input class="form-check-input me-1" type="checkbox" value="Loving You">
-                                    Loving You 
-                                </li>
-                                <li class="list-group-item"> 
-                                    <input class="form-check-input me-1" type="checkbox" value="Unsure">
-                                    Unsure 
-                                </li>
-                            </ul>
-                            <div class="container-fluid">
-                                <input class="form-control mb-1" type="text" aria-label="Search/Add To List" aria-describedby="basic-addon2" />
-                                <div class="container-fluid d-flex align-content-center justify-content-center">
-                                 <button type="button" class="btn btn-primary align-self-center">Add To List</button>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="col-sm align-self-center">
-                        <div class="container-fluid d-flex align-content-center justify-content-center">
-                        	<button type="button" class="btn btn-primary">Add</button>
+                        </div>
+                        <div class="col-sm px-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="assist" name="rolePlayed">
+                                <label class="form-check-label" for="assist">Assist</label>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm">
-                        <label>List of Dx</label>
-                        <ul class="list-group mb-2" name="MaladiesChosen">
-                            <li class="list-group-item">
-                                <input class="form-check-input me-1" type="checkbox" value="Malaria"> 
-                                Malaria 
-                            </li>
-                        </ul>
-                        <button class="btn btn-primary">Remove</button>
-                    </div>
                 </div>
-            </div>
-            <div class="container-fluid">
+                <div class="form-group">
+                    <label for="notesFormControlTextArea">Notes</label>
+                    <textarea class="form-control mb-2" type="text" id="notesFormControlTextArea" rows=3></textarea>
+                </div>
                 <div class="d-flex justify-content-center">
-                    <div class="col-sm px-3">
-                        <label>Procedure</label>
-                    </div>
-                    <div class="col-sm px-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="perform" name="rolePlayed">
-                            <label class="form-check-label" for="perform">Perform</label>
-                        </div>
-                    </div>
-                    <div class="col-sm px-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" id="assist" name="rolePlayed">
-                            <label class="form-check-label" for="assist">Assist</label>
-                        </div>
-                    </div>
+    		<div class="col-sm">
+                    	<button type=submit class="btn btn-primary btn-lg">Submit</button>
+    		</div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="notesFormControlTextArea">Notes</label>
-                <textarea class="form-control mb-2" type="text" id="notesFormControlTextArea" rows=3></textarea>
-            </div>
-            <div class="d-flex justify-content-center">
-		<div class="col-sm">
-                	<button class="btn btn-primary btn-lg">Submit</button>
-		</div>
-            </div>
-        </div>
+        </form>
     </div>
 </body>
 </html>
