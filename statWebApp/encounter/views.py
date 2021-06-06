@@ -19,6 +19,7 @@ class DataEntry(View):
 def process(request):
 	logger = logging.getLogger('django')
 	logger.debug('here is the request object fixify')
-	logger.debug(request)
+	for key in request:
+		logger.debug('key: ' + key)
 	return render(request, 'dataEntry.html')
 
