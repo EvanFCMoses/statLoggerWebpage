@@ -20,7 +20,7 @@ def process(request):
 	logger = logging.getLogger('django')
 	logger.debug('here is the request object fixify')
 	logger.debug('keys:')
-	message = request.POST.getlist("message")
+	message = request.POST
 	logger.debug(message)
 	return render(request, 'dataEntry.html')
 
