@@ -17,7 +17,7 @@ class DataEntry(View):
 
 
 def process(request):
-	logger = logging.getLogger(__name__)
+	logger = logging.getLogger('django')
 	logger.debug('here is the request object fixify')
 	logger.debug(request)
 	return render(request, 'dataEntry.html')
