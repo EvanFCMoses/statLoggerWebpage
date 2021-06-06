@@ -21,6 +21,8 @@ def process(request):
 	logger.debug('here is the request object fixify')
 	logger.debug('keys:')
 	message = request.POST
-	logger.debug(message)
+	for key, value in message.items():
+		logger.debug(key)
+		logger.debug(value)
 	return render(request, 'dataEntry.html')
 
