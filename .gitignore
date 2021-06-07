@@ -131,3 +131,11 @@ dmypy.json
 
 
 statWebApp/assets/admin/
+statWebApp/assets/bootstrap/
+
+statWebApp/encounter/migrations/
+
+lib64
+pyvenv.cfg
+
+.save
