@@ -138,4 +138,4 @@ statWebApp/encounter/migrations/
 lib64
 pyvenv.cfg
 
-.save
+*.save
