@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'jserrorlogging',
     'encounter',
 ]
 
@@ -88,12 +87,6 @@ TEMPLATES = [
         },
     },
 ]
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    # ...
-    'jserrorlogging.context_processors.static',
-    # ...
-)
 
 WSGI_APPLICATION = 'statWebApp.wsgi.application'
 

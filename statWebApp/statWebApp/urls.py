@@ -19,6 +19,5 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('encounter/', include('encounter.urls')),
-    url(r'^jserr/$', include('jserrorlogging.urls', namespace='jserrorlogging')),
     path('admin/', admin.site.urls),
 ]
