@@ -116,7 +116,7 @@
                                 <div class="container-fluid">
                                     <input class="form-control mb-1" type="text" aria-label="Search/Add To List" aria-describedby="basic-addon2" id="Search/Add To List"/>
                                     <div class="container-fluid d-flex align-content-center justify-content-center">
-                                     <button type="button" class="btn btn-primary align-self-center">Add To List</button>
+                                     <button type="button" class="btn btn-primary align-self-center" onclick="newElement()">Add To List</button>
                                  </div>
                              </div>
                          </div>
@@ -170,6 +170,7 @@
     </div>
     <script>
         function newElement() {
+	    console.log("at new Element")
             var li = document.createElement("li");
             var inputValue = document.getElementById("Search/Add To List").value;
             var t = document.createTextNode(inputValue);
