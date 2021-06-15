@@ -172,15 +172,22 @@
         function newElement() {
 	    console.log("at new Element")
             var li = document.createElement("li");
+            li.className = "form-check-input me-1"
+            li.onClick = "removeSelection()"
             var inputValue = document.getElementById("Search/Add To List").value;
             var t = document.createTextNode(inputValue);
             li.appendChild(t);
             if (inputValue === '') {
               alert("You must write something!");
             } else {
+              li.id = "maladies:" + document.getElementById("MaladiesChosen").length;
               document.getElementById("MaladiesChosen").appendChild(li);
             }
             document.getElementById("Search/Add To List").value = "";
+        }
+
+        function removeSelection() {
+            console.log("at remove selection")
         }
     </script>
 </body>
