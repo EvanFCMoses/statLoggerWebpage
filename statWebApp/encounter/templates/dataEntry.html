@@ -129,7 +129,7 @@
                             <label>List of Dx</label>
                             <ul class="list-group mb-2" name="MaladiesChosen" id="MaladiesChosen">
                                 <li class="list-group-item">
-                                    <input class="form-check-input me-1" type="checkbox" value="Malaria"> 
+                                    <input readonly class="form-control-plaintext" type="text" id="placeholderMaladie" value="Malaria"> 
                                     Malaria 
                                 </li>
                             </ul>
@@ -183,14 +183,15 @@
                 li.className = "list-group-item";
                 li.onClick = removeSelection();
                 var childLI = document.createElement("input");
-                childLI.className = "form-check-input me-1";
+                childLI.readonly;
+                childLI.className = "form-control-plaintext";
                 childLI.type = "checkbox";
                 childLI.value = inputValue;
                 var maladiesChosenLength = document.getElementById("MaladiesChosen").children.length;
                 var maladiesText = "maladies: ";
                 childLI.id = maladiesText.concat(maladiesChosenLength); 
                 
-                var text = document.createTextNode("\"".concat(inputValue).concat("\""));
+                var text = document.createTextNode(inputValue);
                 
 
                 li.appendChild(childLI);
