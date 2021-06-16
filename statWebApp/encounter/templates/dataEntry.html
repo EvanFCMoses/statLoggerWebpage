@@ -189,12 +189,8 @@
                 var maladiesChosenLength = document.getElementById("MaladiesChosen").children.length;
                 var maladiesText = "maladies: ";
                 childLI.id = maladiesText.concat(maladiesChosenLength); 
-                
-                var text = document.createTextNode(inputValue);
-                
 
                 li.appendChild(childLI);
-                li.appendChild(text);
                 
                 document.getElementById("MaladiesChosen").appendChild(li);
             }
