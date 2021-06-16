@@ -170,13 +170,14 @@
     </div>
     <script>
         function removeSelection() {
-            console.log("at remove selection")
+            console.log("at remove selection");
         }
 
 
         function newElement() {
-	    console.log("at new Element")
+            console.log("at new Element");
             var inputValue = document.getElementById("Search/Add To List").value;
+            console.log("inputValue: " + inputValue);
             var li = document.createElement("li");
             li.className = "form-check-input me-1";
             li.onClick = removeSelection();
