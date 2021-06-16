@@ -181,12 +181,10 @@
             li.className = "form-check-input me-1";
             li.onClick = removeSelection();
             li.value = inputValue;
-            var t = document.createTextNode(inputValue);
-            li.appendChild(t);
             if (inputValue === '') {
               alert("You must write something!");
             } else {
-                var maladiesChosenLength = document.getElementById("MaladiesChosen").length;
+                var maladiesChosenLength = document.getElementById("MaladiesChosen").children.length;
                 console.log("maladiesChosenLength: ");
                 console.log(maladiesChosenLength);
                 var maladiesText = "maladies: ";
