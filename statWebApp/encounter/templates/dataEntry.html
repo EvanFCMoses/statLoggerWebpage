@@ -175,21 +175,24 @@
 
 
         function newElement() {
-            console.log("at new Element");
-            var inputValue = document.getElementById("Search/Add To List").value;
-            console.log("inputValue: " + inputValue);
-            var li = document.createElement("li");
-            li.className = "form-check-input me-1";
-            li.onClick = removeSelection();
-            li.value = inputValue;
             if (inputValue === '') {
               alert("You must write something!");
             } else {
+                var inputValue = document.getElementById("Search/Add To List").value;
+                var li = document.createElement("li");
+                li.className = "list-group-item";
+                li.onClick = removeSelection();
+                var childLI = document.createElement("input")
+                childLI.class = "form-check-input me-1"
+                childLI.type = checkbox
+                childLI.value = inputValue;
                 var maladiesChosenLength = document.getElementById("MaladiesChosen").children.length;
-                console.log("maladiesChosenLength: ");
-                console.log(maladiesChosenLength);
                 var maladiesText = "maladies: ";
-                li.id = maladiesText.concat(maladiesChosenLength); 
+                childLI.id = maladiesText.concat(maladiesChosenLength); 
+                
+                var text = document.createTextNode(inputValue);
+                childLI.appendChild(text);
+                
                 document.getElementById("MaladiesChosen").appendChild(li);
             }
             document.getElementById("Search/Add To List").value = "";
