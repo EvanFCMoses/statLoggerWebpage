@@ -191,9 +191,10 @@
                 childLI.id = maladiesText.concat(maladiesChosenLength); 
                 
                 var text = document.createTextNode("\"".concat(inputValue).concat("\""));
-                childLI.appendChild(text);
+                
 
                 li.appendChild(childLI);
+                li.appendChild(text);
                 
                 document.getElementById("MaladiesChosen").appendChild(li);
             }
