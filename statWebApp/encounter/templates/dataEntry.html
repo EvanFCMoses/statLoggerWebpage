@@ -89,28 +89,22 @@
                                 </div>
                                 <ul class="list-group mb-2" name="MaladiesToChoose">
                                     <li class="list-group-item">
-                                        <input class="form-check-input me-1" type="checkbox" value="Malaria">
-                                        Malaria
+                                        <input class="form-control-plaintext" type="text" value="Malaria" onclick="addSelection">
                                     </li>
                                     <li class="list-group-item"> 
-                                        <input class="form-check-input me-1" type="checkbox" value="Mumps">
-                                        Mumps 
+                                        <input class="form-control-plaintext" type="text" value="Mumps" onclick="addSelection">
                                     </li>
                                     <li class="list-group-item"> 
-                                        <input class="form-check-input me-1" type="checkbox" value="Woozles">
-                                        Woozles 
+                                        <input class="form-control-plaintext" type="text" value="Woozles" onclick="addSelection">
                                     </li>
                                     <li class="list-group-item"> 
-                                        <input class="form-check-input me-1" type="checkbox" value="Dizzy">
-                                        Dizzy 
+                                        <input class="form-control-plaintext" type="text" value="Dizzy" onclick="addSelection"> 
                                     </li>
                                     <li class="list-group-item"> 
-                                        <input class="form-check-input me-1" type="checkbox" value="Loving You">
-                                        Loving You 
+                                        <input class="form-control-plaintext" type="text" value="Loving You" onclick="addSelection">
                                     </li>
                                     <li class="list-group-item"> 
-                                        <input class="form-check-input me-1" type="checkbox" value="Unsure">
-                                        Unsure 
+                                        <input class="form-control-plaintext" type="text" value="Unsure" onclick="addSelection">
                                     </li>
                                 </ul>
                                 <div class="container-fluid">
@@ -164,6 +158,10 @@
     <script>
         function removeSelection() {
             console.log("at remove selection");
+        }
+
+        function addSelection() {
+            console.log("adding selection")
         }
 
 
