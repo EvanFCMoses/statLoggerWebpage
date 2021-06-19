@@ -89,22 +89,22 @@
                                 </div>
                                 <ul class="list-group mb-2" name="MaladiesToChoose">
                                     <li class="list-group-item">
-                                        <input readonly class="form-control-plaintext" type="text" value="Malaria" onclick="addSelection()">
+                                        <input readonly class="form-control-plaintext" type="text" value="Malaria">
                                     </li>
                                     <li class="list-group-item"> 
-                                        <input readonly class="form-control-plaintext" type="text" value="Mumps" onclick="addSelection()">
+                                        <input readonly class="form-control-plaintext" type="text" value="Mumps">
                                     </li>
                                     <li class="list-group-item"> 
-                                        <input readonly class="form-control-plaintext" type="text" value="Woozles" onclick="addSelection()">
+                                        <input readonly class="form-control-plaintext" type="text" value="Woozles">
                                     </li>
                                     <li class="list-group-item"> 
-                                        <input readonly class="form-control-plaintext" type="text" value="Dizzy" onclick="addSelection()"> 
+                                        <input readonly class="form-control-plaintext" type="text" value="Dizzy"> 
                                     </li>
                                     <li class="list-group-item"> 
-                                        <input readonly class="form-control-plaintext" type="text" value="Loving You" onclick="addSelection()">
+                                        <input readonly class="form-control-plaintext" type="text" value="Loving You">
                                     </li>
                                     <li class="list-group-item"> 
-                                        <input readonly class="form-control-plaintext" type="text" value="Unsure" onclick="addSelection()">
+                                        <input readonly class="form-control-plaintext" type="text" value="Unsure">
                                     </li>
                                 </ul>
                                 <div class="container-fluid">
@@ -156,11 +156,23 @@
         </form>
     </div>
     <script>
-        function removeSelection() {
-            console.log("at remove selection");
+
+        var maladiesSuggestionList = document.getElementById("MaladiesChosen").children;
+
+        maladiesSuggestionList.foreach(assignAddOnClick);
+
+        function assignAddOnClick(maladie, index, array) {
+            maladie.onClick = addSelection(maladie.value);
         }
 
-        function addSelection() {
+        function removeSelection(maladieToRemoveId) {
+            console.log("at remove selection");
+            var maladiesAppliedList = document.getElementById(MaladiesChosen).children;
+
+            //for()
+        }
+
+        function addSelection(maladieToAddId) {
             console.log("adding selection")
         }
 
@@ -182,19 +194,20 @@
             var li = document.createElement("li");
             li.className = "list-group-item";
             li.onClick = removeSelection();
+
             var childLI = document.createElement("input");
             childLI.readonly;
             childLI.className = "form-control-plaintext";
             childLI.type = "text";
             childLI.value = maladieName;
             childLI.setAttribute('readonly', true);
+
             var maladiesChosenLength = document.getElementById("MaladiesChosen").children.length;
             var maladiesText = "maladies: ";
             childLI.id = maladiesText.concat(maladiesChosenLength); 
             li.appendChild(childLI);
 
             return li;
-
         }        
     </script>
 </body>
