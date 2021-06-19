@@ -157,7 +157,7 @@
     </div>
     <script>
 
-        var maladiesSuggestionList = Array.from(document.getElementById("MaladiesChosen").children).map;
+        var maladiesSuggestionList = [].slice.call(document.getElementById("MaladiesChosen").children);
 
         maladiesSuggestionList.foreach(assignAddOnClick);
 
