@@ -166,28 +166,35 @@
 
 
         function newElement() {
-            if (inputValue === '') {
+            if (inputValue == '') {
               alert("You must write something!");
             } else {
                 var inputValue = document.getElementById("Search/Add To List").value;
-                var li = document.createElement("li");
-                li.className = "list-group-item";
-                li.onClick = removeSelection();
-                var childLI = document.createElement("input");
-                childLI.readonly;
-                childLI.className = "form-control-plaintext";
-                childLI.type = "text";
-                childLI.value = inputValue;
-                childLI.setAttribute('readonly', true);
-                var maladiesChosenLength = document.getElementById("MaladiesChosen").children.length;
-                var maladiesText = "maladies: ";
-                childLI.id = maladiesText.concat(maladiesChosenLength); 
-
-                li.appendChild(childLI);
+                
+                var li = createElementOfMaladie(inputValue);
                 
                 document.getElementById("MaladiesChosen").appendChild(li);
             }
             document.getElementById("Search/Add To List").value = "";
+        }
+
+        function createElementOfMaladie(maladieName) {
+            var li = document.createElement("li");
+            li.className = "list-group-item";
+            li.onClick = removeSelection();
+            var childLI = document.createElement("input");
+            childLI.readonly;
+            childLI.className = "form-control-plaintext";
+            childLI.type = "text";
+            childLI.value = inputValue;
+            childLI.setAttribute('readonly', true);
+            var maladiesChosenLength = document.getElementById("MaladiesChosen").children.length;
+            var maladiesText = "maladies: ";
+            childLI.id = maladiesText.concat(maladiesChosenLength); 
+            li.appendChild(childLI);
+
+            return li;
+
         }        
     </script>
 </body>
