@@ -159,7 +159,7 @@
 
         var maladiesSuggestionList = [].slice.call(document.getElementById("MaladiesChosen").children);
 
-        maladiesSuggestionList.foreach(assignAddOnClick);
+        maladiesSuggestionList.map(assignAddOnClick);
 
         function assignAddOnClick(maladie, index, array) {
             maladie.onClick = addSelection(maladie.value);
