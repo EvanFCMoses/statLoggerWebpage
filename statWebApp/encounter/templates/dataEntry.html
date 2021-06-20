@@ -162,10 +162,12 @@
         console.log(maladiesSuggestionList.length);
         console.log(maladiesSuggestionList);
 
+        // maladiesSuggestionList.map(assignAddOnClick);
         for (var i = 0; i < maladiesSuggestionList.length; i++) {
+            console.log(maladiesSuggestionList[i]);
             assignAddOnClick(maladiesSuggestionList[i]);
         }
-        maladiesSuggestionList.map(assignAddOnClick);
+        
 
         function assignAddOnClick(maladieItem) {
             maladieItem.onClick = addSelection(maladieItem.value);
