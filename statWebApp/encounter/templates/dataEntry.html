@@ -165,15 +165,19 @@
         // maladiesSuggestionList.map(assignAddOnClick);
         for (var i = 0; i < maladiesSuggestionList.length; i++) {
             console.log(maladiesSuggestionList[i].children);
-            assignAddOnClick(maladiesSuggestionList[i].children);
+            maladiesSuggestionList[i].children.onClick = function() {
+                addSelection(maladiesSuggestionList[i].children.value);
+            }
+
+            // assignAddOnClick(maladiesSuggestionList[i].children);
             console.log("after assigning onClick");
             console.log(maladiesSuggestionList[i].children);
         }
         
 
-        function assignAddOnClick(maladieItem) {
-            maladieItem.onClick = addSelection(maladieItem.value);
-        }
+        // function assignAddOnClick(maladieItem) {
+        //     maladieItem.onClick = addSelection(maladieItem.value);
+        // }
 
         function removeSelection(maladieToRemoveId) {
             console.log("at remove selection");
