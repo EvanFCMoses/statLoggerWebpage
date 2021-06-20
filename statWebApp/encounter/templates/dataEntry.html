@@ -166,6 +166,7 @@
         for (var i = 0; i < maladiesSuggestionList.length; i++) {
             console.log(maladiesSuggestionList[i].children);
             maladiesSuggestionList[i].children.onClick = function() {
+                console.log("before onClick Action");
                 addSelection(maladiesSuggestionList[i].children.value);
             }
 
