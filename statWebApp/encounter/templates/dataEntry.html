@@ -159,13 +159,16 @@
 
         var maladiesSuggestionList = [].slice.call(document.getElementById("MaladiesToChoose").children);
 
-        console.log(maladiesSuggestionList.size)
-        console.log(maladiesSuggestionList)
+        console.log(maladiesSuggestionList.length);
+        console.log(maladiesSuggestionList);
 
+        for (var i = 0; i < maladiesSuggestionList.length; i++) {
+            assignAddOnClick(maladiesSuggestionList[i]);
+        }
         maladiesSuggestionList.map(assignAddOnClick);
 
-        function assignAddOnClick(maladie, index, array) {
-            maladie.onClick = addSelection(maladie.value);
+        function assignAddOnClick(maladieItem) {
+            maladieItem.onClick = addSelection(maladieItem.value);
         }
 
         function removeSelection(maladieToRemoveId) {
