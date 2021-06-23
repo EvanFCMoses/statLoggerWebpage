@@ -166,7 +166,7 @@
 
         function removeSelection(maladieToRemove) {
 
-            var maladieChoices = document.getElementById("MaladiesToChoose").children
+            var maladieChoices = document.getElementById("MaladiesToChoose").children;
             for(int i = 0; i < maladieChoices.length; i++) {
                 if(maladieChoices[i].textContent == maladieToRemove.textContent) {
                     maladieChoices[i].style.display="block";
