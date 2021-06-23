@@ -157,6 +157,10 @@
     </div>
     <script>
 
+        function addSelection(maladieToAddId) {
+            console.log("adding selection: " + maladieToAddId);
+        }
+
         var maladiesSuggestionList = document.getElementById("MaladiesToChoose").children;
 
         for (var i = 0; i < maladiesSuggestionList.length; i++) {
@@ -173,10 +177,6 @@
             // var maladiesAppliedList = Array.from(document.getElementById("MaladiesToChoose").children).map;
 
             //for()
-        }
-
-        function addSelection(maladieToAddId) {
-            console.log("adding selection: " + maladieToAddId);
         }
 
 
