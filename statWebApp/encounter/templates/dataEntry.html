@@ -164,12 +164,12 @@
         }
     
 
-        function removeSelection(maladieToRemoveText) {
+        function removeSelection(maladieToRemove) {
             console.log("at removeSelection");
             var maladieChoices = document.getElementById("MaladiesToChoose").children;
             for(let i = 0; i < maladieChoices.length; i++) {
                 console.log("looking at: " + maladieChoices[i].textContent);
-                if(maladieChoices[i].textContent == maladieToRemoveText) {
+                if(maladieChoices[i].textContent == maladieToRemove.textContent) {
                     maladieChoices[i].style.display="block";
                 }
             }
@@ -199,7 +199,7 @@
             var li = document.createElement("li");
             li.className = "list-group-item";
             li.addEventListener("click", function() {
-                removeSelection(maladieName);
+                removeSelection(li);
             });
             li.textContent = maladieName
 
