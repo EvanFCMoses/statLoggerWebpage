@@ -205,7 +205,7 @@
 
             var childLI = document.createElement("input");
             childLI.readonly;
-            childLI.className = "form-control-plaintext";
+            childLI.className = "form-control";
             childLI.type = "text";
             childLI.value = maladieName;
             childLI.setAttribute('readonly', true);
@@ -213,7 +213,8 @@
 
             var maladiesChosenLength = document.getElementById("MaladiesChosen").children.length;
             var maladiesText = "maladies: ";
-            childLI.id = maladiesText.concat(maladiesChosenLength); 
+            childLI.id = maladiesText.concat(maladiesChosenLength);
+            childLI.name = maladiesText.concat(maladiesChosenLength); 
             li.appendChild(childLI);
 
             return li;
