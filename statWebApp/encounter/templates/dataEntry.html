@@ -197,7 +197,7 @@
         function createElementOfMaladie(maladieName) {
             var li = document.createElement("li");
             li.className = "list-group-item";
-            li.onClick = removeSelection(li);
+            li.onClick = "removeSelection(this)";
             li.textContent = maladieName
 
             var childLI = document.createElement("input");
