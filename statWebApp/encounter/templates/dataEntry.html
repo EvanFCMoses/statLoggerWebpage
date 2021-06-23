@@ -91,19 +91,19 @@
                                     <li class="list-group-item" onclick="addSelection(this)">
                                         Malaria
                                     </li>
-                                    <li class="list-group-item"> 
+                                    <li class="list-group-item" onclick="addSelection(this)"> 
                                         Mumps
                                     </li>
-                                    <li class="list-group-item"> 
+                                    <li class="list-group-item" onclick="addSelection(this)"> 
                                         Woozles
                                     </li>
-                                    <li class="list-group-item"> 
+                                    <li class="list-group-item" onclick="addSelection(this)"> 
                                         Dizzy 
                                     </li>
-                                    <li class="list-group-item"> 
+                                    <li class="list-group-item" onclick="addSelection(this)"> 
                                         Loving You
                                     </li>
-                                    <li class="list-group-item"> 
+                                    <li class="list-group-item" onclick="addSelection(this)"> 
                                         Unsure
                                     </li>
                                 </ul>
@@ -157,19 +157,26 @@
     </div>
     <script>
 
-        function addSelection(maladieToAddId) {
+        function addSelection(maladieToAdd) {
             console.log("adding selection: " + maladieToAddId);
+            var inputValue = document.getElementById("Search/Add To List").value;
+                
+            var li = createElementOfMaladie(maladieToAdd.value);
+                
+            document.getElementById("MaladiesChosen").appendChild(li);
+
+            maladieToAdd.display="none";
         }
 
-        var maladiesSuggestionList = document.getElementById("MaladiesToChoose").children;
+        // var maladiesSuggestionList = document.getElementById("MaladiesToChoose").children;
 
-        for (var i = 0; i < maladiesSuggestionList.length; i++) {
-            console.log("adding onclick");
-            console.log(maladiesSuggestionList[i]);
-            maladiesSuggestionList[i].onClick = function() {
-                addSelection(maladiesSuggestionList[i].children.value);
-            }
-        }
+        // for (var i = 0; i < maladiesSuggestionList.length; i++) {
+        //     console.log("adding onclick");
+        //     console.log(maladiesSuggestionList[i]);
+        //     maladiesSuggestionList[i].onClick = function() {
+        //         addSelection(maladiesSuggestionList[i].children.value);
+        //     }
+        // }
     
 
         function removeSelection(maladieToRemoveId) {
