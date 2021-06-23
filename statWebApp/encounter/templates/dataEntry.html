@@ -162,7 +162,7 @@
         for (var i = 0; i < maladiesSuggestionList.length; i++) {
             console.log("adding onclick");
             console.log(maladiesSuggestionList[i]);
-            maladiesSuggestionList[i]onClick = function() {
+            maladiesSuggestionList[i].onClick = function() {
                 addSelection(maladiesSuggestionList[i].children.value);
             }
         }
