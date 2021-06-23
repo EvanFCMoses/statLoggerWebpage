@@ -157,13 +157,12 @@
     </div>
     <script>
 
-        var maladiesSuggestionList = [].slice.call(document.getElementById("MaladiesToChoose").children);
+        var maladiesSuggestionList = document.getElementById("MaladiesToChoose").children;
 
         for (var i = 0; i < maladiesSuggestionList.length; i++) {
-            maladiesSuggestionList[i].children.onClick = function() {
-                addSelection(maladiesSuggestionList[i].children.value);
-            }
-            maladiesSuggestionList[i].onClick = function() {
+            console.log("adding onclick");
+            console.log(maladiesSuggestionList[i]);
+            maladiesSuggestionList[i]onClick = function() {
                 addSelection(maladiesSuggestionList[i].children.value);
             }
         }
