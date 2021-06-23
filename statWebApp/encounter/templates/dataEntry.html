@@ -165,9 +165,10 @@
     
 
         function removeSelection(maladieToRemove) {
-
+            console.log("at removeSelection");
             var maladieChoices = document.getElementById("MaladiesToChoose").children;
             for(let i = 0; i < maladieChoices.length; i++) {
+                console.log("looking at: " + maladieChoices[i].textContent);
                 if(maladieChoices[i].textContent == maladieToRemove.textContent) {
                     maladieChoices[i].style.display="block";
                 }
