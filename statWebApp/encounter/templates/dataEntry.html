@@ -117,9 +117,6 @@
                         <div class="col-sm">
                             <label>List of Dx</label>
                             <ul class="list-group mb-2" name="MaladiesChosen" id="MaladiesChosen">
-                                <li class="list-group-item">
-                                    <input readonly class="form-control-plaintext" type="text" id="placeholderMaladie" value="Malaria">
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -165,20 +162,19 @@
 
             maladieToAdd.style.display="none";
         }
-
-        // var maladiesSuggestionList = document.getElementById("MaladiesToChoose").children;
-
-        // for (var i = 0; i < maladiesSuggestionList.length; i++) {
-        //     console.log("adding onclick");
-        //     console.log(maladiesSuggestionList[i]);
-        //     maladiesSuggestionList[i].onClick = function() {
-        //         addSelection(maladiesSuggestionList[i].children.value);
-        //     }
-        // }
     
 
-        function removeSelection(maladieToRemoveId) {
-            console.log("at remove selection");
+        function removeSelection(maladieToRemove) {
+
+            var maladieChoices = document.getElementById("MaladiesToChoose").children
+            for(int i = 0; i < maladieChoices.length; i++) {
+                if(maladieChoices[i].textContent == maladieToRemove.textContent) {
+                    maladieChoices[i].style.display="block";
+                }
+            }
+
+            maladieToRemove.style.display="none";
+            
             // var maladiesAppliedList = Array.from(document.getElementById("MaladiesToChoose").children).map;
 
             //for()
