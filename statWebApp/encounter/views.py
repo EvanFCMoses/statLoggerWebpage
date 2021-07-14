@@ -9,13 +9,6 @@ class Index(View):
 		return render(request, self.template)
 
 
-class DataEntry(View):
-	template = 'dataEntry.html'
-
-	def get(self, request):
-		return render(request, self.template)
-
-
 def dataEntry(request):
 	if request.method == 'POST':
 		logger = logging.getLogger('django')
