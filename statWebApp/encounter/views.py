@@ -15,7 +15,9 @@ class DataEntry(View):
 	def get(self, request):
 		return render(request, self.template)
 
-	def post(self, request):
+
+def dataEntry(request):
+	if request.method == 'POST':
 		logger = logging.getLogger('django')
 		logger.debug('here is the request object fixify')
 		logger.debug('keys:')
@@ -24,15 +26,6 @@ class DataEntry(View):
 			logger.debug(key)
 			logger.debug(value)
 		return render(request, 'dataEntry.html')
-
-
-# def process(request):
-# 	logger = logging.getLogger('django')
-# 	logger.debug('here is the request object fixify')
-# 	logger.debug('keys:')
-# 	message = request.POST
-# 	for key, value in message.items():
-# 		logger.debug(key)
-# 		logger.debug(value)
-# 	return render(request, 'dataEntry.html')
-
+	
+	elif request.method == 'GET':
+		return render(request, 'dataEntry.html')
