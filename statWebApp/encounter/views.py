@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from .models import Disease
 import logging
 
 class Index(View):
@@ -21,4 +22,9 @@ def dataEntry(request):
 		return render(request, 'dataEntry.html')
 	
 	elif request.method == 'GET':
-		return render(request, 'dataEntry.html')
+		all_diseases = Disease.objects.all()
+		template = loader.get_template('encounter/dataEntry.html')
+		context = {
+			'all_diseases': all_diseases,
+		}
+		return HttpResponse(template.render(context, request)

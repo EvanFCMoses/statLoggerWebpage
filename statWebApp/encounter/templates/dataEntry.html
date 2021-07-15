@@ -90,6 +90,15 @@
                                     <button class="btn btn-primary btn-sm">Freq</button>
                                 </div>
                                 <ul class="list-group mb-2" name="MaladiesToChoose" id="MaladiesToChoose">
+                                    {% if all_diseases %}
+                                        {% for disease in all_diseases %}
+                                        <li class="list-group-item" onclick="addSelection(this)">
+                                            {{disease.disease_name}}
+                                        </li>
+                                        {% endfor %}
+                                    {% else %}
+                                        <p>No diseases found</p>
+                                    {% endif %}
                                     <li class="list-group-item" onclick="addSelection(this)">
                                         Malaria
                                     </li>
