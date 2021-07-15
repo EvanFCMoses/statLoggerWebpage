@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views import View
+from django.http import HttpResponse
+from django.template import loader
 from .models import Disease
 import logging
 
@@ -23,8 +25,8 @@ def dataEntry(request):
 	
 	elif request.method == 'GET':
 		all_diseases = Disease.objects.all()
-		template = loader.get_template('encounter/dataEntry.html')
+		template = loader.get_template('dataEntry.html')
 		context = {
 			'all_diseases': all_diseases,
 		}
-		return HttpResponse(template.render(context, request)
+		return HttpResponse(template.render(context, request))
