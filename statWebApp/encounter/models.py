@@ -2,6 +2,7 @@ from django.db import models
 
 
 class AgeRange(models.Model):
+	primary_key = models.IntegerField(primary_key = True)
 	lower_age_range = models.IntegerField()
 	higher_age_range = models.IntegerField()
 	range_text = models.CharField(max_length=50)
