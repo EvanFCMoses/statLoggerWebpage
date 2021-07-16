@@ -14,7 +14,6 @@ class Encounter(models.Model):
 	inpatient_outpatient_status = models.CharField(max_length = 12)
 	latitude = models.IntegerField()
 	longitude = models.IntegerField()
-	diagnosis = models.ForeignKey(DiagnosisDiseaseGroupEntry, on_delete = models.CASCADE)
 	date = models.DateField()
 	notes = models.CharField(max_length = 1000)
 	test_indicator = models.BooleanField(default = False)
