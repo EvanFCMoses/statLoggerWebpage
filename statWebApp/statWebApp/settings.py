@@ -43,7 +43,7 @@ SECRET_KEY = 'ipffbba=-y40^pe97f&p2g+=*&lrw$j!!f%1n_o2l&-+88*3x#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['impromptumachinactions.us','157.230.53.34', 'localhost']
+ALLOWED_HOSTS = ['impromptumachinactions.us','157.230.53.34', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -146,5 +146,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/var/www/impromptumachinactions.us/encounter/'
 
 STATICFILES_DIRS = (
-    '/home/evanm/git/statLoggerWebpage/statWebApp/assets',
+    '/home/evanm/repos/statLoggerWebpage/statWebApp/assets',
 )
