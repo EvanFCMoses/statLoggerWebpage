@@ -21,12 +21,16 @@ def dataEntry(request):
 		for key, value in message.items():
 			logger.debug(key)
 			logger.debug(value)
-		return render(request, 'dataEntry.html')
-	
+
+		return returnDataEntry(request)
+
 	elif request.method == 'GET':
-		all_diseases = Disease.objects.all()
-		template = loader.get_template('dataEntry.html')
-		context = {
-			'all_diseases': all_diseases,
-		}
-		return HttpResponse(template.render(context, request))
+		return returnDataEntry(request)
+
+def returnDataEntry(request):
+	all_diseases = Disease.objects.all()
+	template = loader.get_template('dataEntry.html')
+	context = {
+		'all_diseases': all_diseases,
+	}
+	return HttpResponse(template.render(context, request))
