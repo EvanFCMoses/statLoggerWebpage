@@ -1,11 +1,4 @@
 from django.db import models
-
-
-class AgeRange(models.Model):
-	primary_key = models.IntegerField(primary_key = True)
-	lower_age_range = models.IntegerField()
-	higher_age_range = models.IntegerField()
-	range_text = models.CharField(max_length=50)
 	
 
 class Disease(models.Model):
@@ -13,17 +6,14 @@ class Disease(models.Model):
 	disease_name = models.CharField(max_length = 50)
 	stub_indicator = models.BooleanField(default = False)
 
-class PatientDiseaseGroup(models.Model):
-	primary_key = models.IntegerField(primary_key = True)
-
 class DiagnosisDiseaseGroupEntry(models.Model):
 	primary_key = models.IntegerField(primary_key = True)
 	disease_key = models.ForeignKey(Disease, on_delete = models.CASCADE)
-	patient_disease_group_key = models.ForeignKey(PatientDiseaseGroup, on_delete = models.CASCADE)
+	encounter_key = models.ForeignKey(Encounter, on_delete = models.CASCADE)
 
 
 class Encounter(models.Model):
-	age = models.ForeignKey(AgeRange, on_delete = models.CASCADE)
+	age = models.IntegerField()
 	gender = models.CharField(max_length = 10)
 	follow_up_status = models.CharField(max_length = 12)
 	inpatient_outpatient_status = models.CharField(max_length = 12)
@@ -33,6 +23,3 @@ class Encounter(models.Model):
 	date = models.DateField()
 	notes = models.CharField(max_length = 1000)
 	test_indicator = models.BooleanField(default = False)
-	
-
-# Create your models here.
