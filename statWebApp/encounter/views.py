@@ -37,24 +37,35 @@ def returnDataEntry(request):
 
 class SavePost():
 	def updateGender(encounter, gender):
+		logger = logging.getLogger('debug')
+		logger.debug('at update gender')
 		encounter.gender = str(gender)
 		encounter.save()
 	def updatePatientAge(encounter, patientAge):
-		encounter.patientAge = str(patientAge)
 		logger = logging.getLogger('debug')
+		logger.debug('at updatePatientAge')
+		encounter.patientAge = int(patientAge)
 		logger.debug('after saving patient age')
 		logger.debug(encounter)
 		encounter.save()
 	def updateClinicLocation(encounter, clinicLocation):
+		logger = logging.getLogger('debug')
+		logger.debug('at updatecliniclocation')
 		encounter.clinicLocation = str(clinicLocation)
 		encounter.save()
 	def updatePriorPatient(encounter, priorPatient):
+		logger = logging.getLogger('debug')
+		logger.debug('at updatepriorPatient')
 		encounter.priorPatient = str(priorPatient)
 		encounter.save()
 	def updateRolePlayed(encounter, rolePlayed):
+		logger = logging.getLogger('debug')
+		logger.debug('at updateRolePlayed')
 		encounter.rolePlayed = str(rolePlayed)
 		encounter.save()
 	def updateNotes(encounter, notes):
+		logger = logging.getLogger('debug')
+		logger.debug('at updateNotes')
 		encounter.notes = str(notes)
 		encounter.save()
 	def addDiagnosis(self, encounter, diagnosis):
@@ -73,15 +84,18 @@ class SavePost():
 	}
 
 	def processAndSaveNewEntry(self, message):
-#		logger = logging.getLogger('django')
+		logger = logging.getLogger('django')
 
 		encounter = Encounter()
 		encounter.save()
 		for key, value in message.items():
 			if key in self.inputMap:
 #				logger.debug("key: " + str(key))
+				logger.debug('FIXIFY')
 				func = self.inputMap.get(key, "nothing")
-#				logger.debug("func: " + str(func))
+				logger.debug("func: " + str(func))
+				logger.debug(value)
+				logger.debug(type(value))
 				func(encounter, value)
 			elif "maladies" in key:
 				self.addDiagnosis(encounter, value)
