@@ -18,13 +18,14 @@ def dataEntry(request):
 		logger.debug('here is the request object fixify')
 		logger.debug('keys:')
 		message = request.POST
-		processAndSaveNewEntry(message.items)
+		savePost = SavePost()
+		savePost.processAndSaveNewEntry(message)
 		for key, value in message.items():
 			logger.debug(key)
 			logger.debug(value)
 
 		return returnDataEntry(request)
-	
+
 	elif request.method == 'GET':
 		return returnDataEntry(request)
 
@@ -36,21 +37,22 @@ def returnDataEntry(request):
 	}
 	return HttpResponse(template.render(context, request))
 
-class savePost(self):
-	def updateGender(encounter, gender):
+class SavePost():
+	def updateGender(self, encounter, gender):
 		encounter.gender = gender
-	def updatePatientAge(encounter, patientAge):
+	def updatePatientAge(self, encounter, patientAge):
 		encounter.patientAge = patientAge
-	def updateClinicLocation(encounter, clinicLocation):
+	def updateClinicLocation(self, encounter, clinicLocation):
 		encounter.clinicLocation = clinicLocation
-	def updatePriorPatient(encounter, priorPatient):
+	def updatePriorPatient(self, encounter, priorPatient):
 		encounter.priorPatient = priorPatient
-	def updateRolePlayed(encounter, rolePlayed):
+	def updateRolePlayed(self, encounter, rolePlayed):
 		encounter.rolePlayed = rolePlayed
-	def updateNotes(encounter, notes):
+	def updateNotes(self, encounter, notes):
 		encounter.notes = notes
-	def addDiagnosis(encounter, diagnosis):
-		newDiagnosis, created = Disease.objects.get_or_create(disease_name=diagnosis, stub_indicator=True) #FIXIFY stubRemoval
+	def addDiagnosis(self, encounter, diagnosis):
+		print("looking for diagnosis: " + diagnosis.strip())
+		newDiagnosis, created = Disease.objects.get_or_create(disease_name=str(diagnosis).strip(), stub_indicator=True) #FIXIFY stubRemoval
 		newDiagnosis.save()
 		diagnosisLookupTable = DiagnosisDiseaseGroupEntry(disease_key=newDiagnosis, encounter_key=encounter)
 		diagnosisLookupTable.save()
@@ -62,14 +64,14 @@ class savePost(self):
 		"priorPatient":updatePriorPatient,
 		"rolePlayed":updateRolePlayed,
 		"notes":updateNotes,
-	}	
+	}
 
-	def processAndSaveNewEntry(messageItems):
+	def processAndSaveNewEntry(self, message):
 		encounter = Encounter()
-		for key, value in messageItems:
-			if key in inputMap:
-				func = inputMap.get(key, "nothing")
-				func(encounter, value)
-			else:
-				addDiagnosis(encounter, value)
+		for key, value in message.items():
+			if key in self.inputMap:
+				func = self.inputMap.get(key, "nothing")
+				self.func(encounter, value)
+			elif "diagnosis" in key:
+				self.addDiagnosis(encounter, value)
 
