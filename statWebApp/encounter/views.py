@@ -14,15 +14,13 @@ class Index(View):
 
 def dataEntry(request):
 	if request.method == 'POST':
-		logger = logging.getLogger('django')
-		logger.debug('here is the request object fixify')
-		logger.debug('keys:')
 		message = request.POST
 		savePost = SavePost()
 		savePost.processAndSaveNewEntry(message)
-		for key, value in message.items():
-			logger.debug(key)
-			logger.debug(value)
+#		logger = logging.getLogger('django')
+#		for key, value in message.items():
+#			logger.debug(key)
+#			logger.debug(value)
 
 		return returnDataEntry(request)
 
@@ -38,20 +36,28 @@ def returnDataEntry(request):
 	return HttpResponse(template.render(context, request))
 
 class SavePost():
-	def updateGender(self, encounter, gender):
-		encounter.gender = gender
-	def updatePatientAge(self, encounter, patientAge):
-		encounter.patientAge = patientAge
-	def updateClinicLocation(self, encounter, clinicLocation):
-		encounter.clinicLocation = clinicLocation
-	def updatePriorPatient(self, encounter, priorPatient):
-		encounter.priorPatient = priorPatient
-	def updateRolePlayed(self, encounter, rolePlayed):
-		encounter.rolePlayed = rolePlayed
-	def updateNotes(self, encounter, notes):
-		encounter.notes = notes
+	def updateGender(encounter, gender):
+		encounter.gender = str(gender)
+		encounter.save()
+	def updatePatientAge(encounter, patientAge):
+		encounter.patientAge = str(patientAge)
+		logger = logging.getLogger('debug')
+		logger.debug('after saving patient age')
+		logger.debug(encounter)
+		encounter.save()
+	def updateClinicLocation(encounter, clinicLocation):
+		encounter.clinicLocation = str(clinicLocation)
+		encounter.save()
+	def updatePriorPatient(encounter, priorPatient):
+		encounter.priorPatient = str(priorPatient)
+		encounter.save()
+	def updateRolePlayed(encounter, rolePlayed):
+		encounter.rolePlayed = str(rolePlayed)
+		encounter.save()
+	def updateNotes(encounter, notes):
+		encounter.notes = str(notes)
+		encounter.save()
 	def addDiagnosis(self, encounter, diagnosis):
-		print("looking for diagnosis: " + diagnosis.strip())
 		newDiagnosis, created = Disease.objects.get_or_create(disease_name=str(diagnosis).strip(), stub_indicator=True) #FIXIFY stubRemoval
 		newDiagnosis.save()
 		diagnosisLookupTable = DiagnosisDiseaseGroupEntry(disease_key=newDiagnosis, encounter_key=encounter)
@@ -67,11 +73,16 @@ class SavePost():
 	}
 
 	def processAndSaveNewEntry(self, message):
+#		logger = logging.getLogger('django')
+
 		encounter = Encounter()
+		encounter.save()
 		for key, value in message.items():
 			if key in self.inputMap:
+#				logger.debug("key: " + str(key))
 				func = self.inputMap.get(key, "nothing")
-				self.func(encounter, value)
-			elif "diagnosis" in key:
+#				logger.debug("func: " + str(func))
+				func(encounter, value)
+			elif "maladies" in key:
 				self.addDiagnosis(encounter, value)
-
+		encounter.save()
