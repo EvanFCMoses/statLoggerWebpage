@@ -9,8 +9,9 @@ class Disease(models.Model):
 class Encounter(models.Model):
 	age = models.IntegerField(null=True)
 	gender = models.CharField(max_length = 10, null=True)
-	follow_up_status = models.CharField(max_length = 12, null=True)
-	inpatient_outpatient_status = models.CharField(max_length = 12, null=True)
+	priorPatientStatus = models.CharField(max_length = 12, null=True)
+	clinicLocation = models.CharField(max_length = 12, null=True)
+	rolePlayed = models.CharField(max_length = 12, null=True)
 	latitude = models.IntegerField(null=True)
 	longitude = models.IntegerField(null=True)
 	date = models.DateField(null=True)
