@@ -3,6 +3,7 @@ from django.views import View
 from django.http import HttpResponse
 from django.template import loader
 from .models import Disease, Encounter, DiagnosisDiseaseGroupEntry
+from datetime import date
 import logging
 
 class Index(View):
@@ -63,4 +64,5 @@ class SavePost():
 				encounter.notes = str(value)
 			elif "maladies" in key:
 				self.addDiagnosis(encounter, value)
+		encounter.date = date.today()
 		encounter.save()
