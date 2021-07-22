@@ -15,8 +15,8 @@ class Encounter(models.Model):
 	priorPatientStatus = models.CharField(max_length = 12, null=True)
 	clinicLocation = models.CharField(max_length = 12, null=True)
 	rolePlayed = models.CharField(max_length = 12, null=True)
-	latitude = models.IntegerField(null=True)
-	longitude = models.IntegerField(null=True)
+	latitude = models.IntegerField(null=True, blank=True)
+	longitude = models.IntegerField(null=True, blank=True)
 	date = models.DateField(null=True)
 	notes = models.CharField(max_length = 1000, null=True)
 	test_indicator = models.BooleanField(default = False)
@@ -30,4 +30,4 @@ class DiagnosisDiseaseGroupEntry(models.Model):
 	encounter_key = models.ForeignKey(Encounter, on_delete = models.CASCADE)
 
 	def __str__(self):
-		return 'encounter #' + str(self.encounter_key)
+		return 'encounter #' + str(self.encounter_key.id)

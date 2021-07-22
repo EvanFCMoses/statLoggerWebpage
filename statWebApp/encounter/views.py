@@ -1,7 +1,5 @@
 from django.shortcuts import render
 from django.views import View
-from django.http import HttpResponse
-from django.template import loader
 from .models import Disease, Encounter, DiagnosisDiseaseGroupEntry
 from datetime import date
 import logging
@@ -18,10 +16,6 @@ def dataEntry(request):
 		message = request.POST
 		savePost = SavePost()
 		savePost.processAndSaveNewEntry(message)
-#		logger = logging.getLogger('django')
-#		for key, value in message.items():
-#			logger.debug(key)
-#			logger.debug(value)
 
 		return returnDataEntry(request)
 
@@ -30,16 +24,13 @@ def dataEntry(request):
 
 def returnDataEntry(request):
 	all_diseases = Disease.objects.all()
-	template = loader.get_template('dataEntry.html')
-	context = {
-		'all_diseases': all_diseases,
-	}
-	return HttpResponse(template.render(context, request))
+	context = {'all_diseases': all_diseases,}
+	return render(request, 'dataEntry.html', context)
 
 class SavePost():
 
 	def addDiagnosis(self, encounter, diagnosis):
-		newDiagnosis, created = Disease.objects.get_or_create(disease_name=str(diagnosis).strip(), stub_indicator=True) #FIXIFY stubRemoval
+		newDiagnosis, created = Disease.objects.get_or_create(disease_name=str(diagnosis).strip(), stub_indicator=True)
 		newDiagnosis.save()
 		diagnosisLookupTable = DiagnosisDiseaseGroupEntry(disease_key=newDiagnosis, encounter_key=encounter)
 		diagnosisLookupTable.save()
