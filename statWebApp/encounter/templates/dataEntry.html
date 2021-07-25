@@ -16,6 +16,7 @@
 </head>
 <body class="sb-nav-fixed">
     <div id="layoutSidenav_content">
+        {% if user.is_authenticated %}
         <form action="{% url 'dataEntry' %}" method="post">
             {% csrf_token %}
             <div class="container-fluid">
@@ -144,6 +145,13 @@
                 </div>
             </div>
         </form>
+        {% else %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Log In</button>
+        </form>
+        {% endif %}
     </div>
     <script>
 
