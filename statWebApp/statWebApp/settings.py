@@ -45,6 +45,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['impromptumachinactions.us','157.230.53.34', '127.0.0.1', 'localhost']
 
+LOGIN_REDIRECT_URL = '/encounter/'
+
 
 # Application definition
 

@@ -22,7 +22,14 @@ class Encounter(models.Model):
 	test_indicator = models.BooleanField(default = False)
 
 	def __str__(self):
-		return str(self.date) + ' ' + self.clinicLocation + ' ' + self.notes
+		str_name = ""
+		if type(self.date) != "NoneType":
+			str_name = str_name + str(self.date)
+		if type(self.clinicLocation) != "NoneType":
+			str_name = str_name + ' ' + str(self.clinicLocation)
+		if type(self.notes) != "NoneType":
+			str_name = str_name + ' ' + str(self.notes)
+		return str_name
 
 
 class DiagnosisDiseaseGroupEntry(models.Model):

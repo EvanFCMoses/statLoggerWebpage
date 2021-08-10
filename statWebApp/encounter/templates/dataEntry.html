@@ -17,6 +17,15 @@
 <body class="sb-nav-fixed">
     <div id="layoutSidenav_content">
         {% if user.is_authenticated %}
+        {% if incompleteDataEntered %}
+        <div class="p-3 mb-2 bg-danger text-white">
+            <h3 class="text-center font-weight-bold">Incomplete data entered. You failed to enter: 
+                {% for dataItem in incompleteDataEntered %}
+                {{dataItem}},
+                {% endfor %}
+            </h3>
+        </div>
+        {% endif %}
         <form action="{% url 'dataEntry' %}" method="post">
             {% csrf_token %}
             <div class="container-fluid">
@@ -39,144 +48,141 @@
                         <div class="d-flex justify-content-center">
                             <div class="col-sm">
                                 <label for="ageInput" class="form-label pe-1">Age:</label>
-                                </div>
-                                <div class="col-sm">
-                                    <input class="form-control" type="number" id="patientAge" inputmode="numeric" name="patientAge"></input>
-                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <input class="form-control" type="number" id="patientAge" inputmode="numeric" name="patientAge"></input>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid mb-2">
-                    <div class="d-flex justify-content-center">
-                        <div class="col-sm px-3">
-                            <div class="d-flex justify-content-center">
-                                <div class="col-sm px-1">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="clinic" name="clinicLocation" value="clinic">
-                                        <label class="form-check-label" for="clinic">clinic</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm px-1">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="inPatient" name="clinicLocation" value="inPatient">
-                                        <label class="form-check-label" for="inPatient">in Patient</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm mb-3">
-                            <div class="d-flex justify-content-center">
-                                <div class="col-sm px-1">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="followUp" name="priorPatient" value="followUp">
-                                        <label class="form-check-label" for="clinic">followUp</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm px-1">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="newPatient" name="priorPatient" value="newPatient">
-                                        <label class="form-check-label "for="newPatient">new</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>      
-                    </div>
-                    <div class="container-fluid">
+            </div>
+            <div class="container-fluid mb-2">
+                <div class="d-flex justify-content-center">
+                    <div class="col-sm px-3">
                         <div class="d-flex justify-content-center">
-                            <div class="col-sm mb-1">
-                                <div class="container-fluid mb-1">
-                                    <label>Sort</label>
-                                    <button class="btn btn-primary btn-sm">Name</button>
-                                    <button class="btn btn-primary btn-sm">Freq</button>
+                            <div class="col-sm px-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="clinic" name="clinicLocation" value="clinic">
+                                    <label class="form-check-label" for="clinic">clinic</label>
                                 </div>
-                                <ul class="list-group mb-2" name="MaladiesToChoose" id="MaladiesToChoose">
-                                    {% if all_diseases %}
-                                        {% for disease in all_diseases %}
-                                        <li class="list-group-item" onclick="addSelection(this)">
-                                            {{disease.disease_name}}
-                                        </li>
-                                        {% endfor %}
-                                    {% else %}
-                                        <p>No diseases found</p>
-                                    {% endif %}
-                                </ul>
-                                <div class="container-fluid">
-                                    <input class="form-control mb-1" type="text" aria-label="Search/Add To List" aria-describedby="basic-addon2" id="Search/Add To List"/>
-                                    <div class="container-fluid d-flex align-content-center justify-content-center">
-                                     <button type="button" class="btn btn-primary align-self-center" onclick="newElement()">Add To List</button>
-                                 </div>
-                             </div>
-                         </div>
-                        <div class="col-sm">
-                            <label>List of Dx</label>
-                            <ul class="list-group mb-2" name="MaladiesChosen" id="MaladiesChosen">
-                            </ul>
+                            </div>
+                            <div class="col-sm px-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="inPatient" name="clinicLocation" value="inPatient">
+                                    <label class="form-check-label" for="inPatient">in Patient</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-sm mb-3">
+                        <div class="d-flex justify-content-center">
+                            <div class="col-sm px-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="followUp" name="priorPatient" value="followUp">
+                                    <label class="form-check-label" for="clinic">followUp</label>
+                                </div>
+                            </div>
+                            <div class="col-sm px-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="newPatient" name="priorPatient" value="newPatient">
+                                    <label class="form-check-label "for="newPatient">new</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>      
                 </div>
                 <div class="container-fluid">
                     <div class="d-flex justify-content-center">
-                        <div class="col-sm px-3">
-                            <label>Procedure</label>
-                        </div>
-                        <div class="col-sm px-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" id="perform" name="rolePlayed" value="performed">
-                                <label class="form-check-label" for="perform">Perform</label>
+                        <div class="col-sm mb-1">
+                            <div class="container-fluid mb-1">
+                                <label>Sort</label>
+                                <button class="btn btn-primary btn-sm">Name</button>
+                                <button class="btn btn-primary btn-sm">Freq</button>
                             </div>
+                            <ul class="list-group mb-2" name="MaladiesToChoose" id="MaladiesToChoose">
+                                {% if all_diseases %}
+                                {% for disease in all_diseases %}
+                                <li class="list-group-item" onclick="addSelection(this)">
+                                    {{disease.disease_name}}
+                                </li>
+                                {% endfor %}
+                                {% else %}
+                                <p>No diseases found</p>
+                                {% endif %}
+                            </ul>
+                            <div class="container-fluid">
+                                <input class="form-control mb-1" type="text" aria-label="Search/Add To List" aria-describedby="basic-addon2" id="Search/Add To List"/>
+                                <div class="container-fluid d-flex align-content-center justify-content-center">
+                                 <button type="button" class="btn btn-primary align-self-center" onclick="newElement()">Add To List</button>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-sm">
+                        <label>List of Dx</label>
+                        <ul class="list-group mb-2" name="MaladiesChosen" id="MaladiesChosen">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="d-flex justify-content-center">
+                    <div class="col-sm px-3">
+                        <label>Procedure</label>
+                    </div>
+                    <div class="col-sm px-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="perform" name="rolePlayed" value="performed">
+                            <label class="form-check-label" for="perform">Perform</label>
                         </div>
-                        <div class="col-sm px-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" id="assist" name="rolePlayed" value="assisted">
-                                <label class="form-check-label" for="assist">Assist</label>
-                            </div>
+                    </div>
+                    <div class="col-sm px-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="assist" name="rolePlayed" value="assisted">
+                            <label class="form-check-label" for="assist">Assist</label>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="notes">Notes</label>
-                    <input class="form-control mb-2" type="text" id="notes" name="notes"></input>
-                </div>
-                <div class="d-flex justify-content-center">
-    		<div class="col-sm">
-                    	<input type=submit class="btn btn-primary btn-lg" formnovalidate="formnovalidate"></input>
-    		</div>
-                </div>
             </div>
-        </form>
-        {% else %}
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Log In</button>
-        </form>
-        {% endif %}
+            <div class="form-group">
+                <label for="notes">Notes</label>
+                <input class="form-control mb-2" type="text" id="notes" name="notes"></input>
+            </div>
+            <div class="d-flex justify-content-center">
+              <div class="col text-center">
+                 <input type=submit class="btn btn-primary btn-lg" formnovalidate="formnovalidate"></input>
+             </div>
+             <div class="col-sm">
+                <a class="btn btn-sm btn-secondary" href="/encounter/admin/">admin page</a>
+            </div>
+        </div>
     </div>
-    <script>
+</form>
+{% endif %}
+</div>
+<script>
 
-        function addSelection(maladieToAdd) {
-            console.log("adding selection: " + maladieToAdd);                
-            var li = createElementOfMaladie(maladieToAdd.textContent);
-                
-            document.getElementById("MaladiesChosen").appendChild(li);
+    function addSelection(maladieToAdd) {
+        console.log("adding selection: " + maladieToAdd);                
+        var li = createElementOfMaladie(maladieToAdd.textContent);
 
-            maladieToAdd.style.display="none";
-        }
+        document.getElementById("MaladiesChosen").appendChild(li);
+
+        maladieToAdd.style.display="none";
+    }
     
 
-        function removeSelection(maladieToRemove) {
-            console.log("at removeSelection");
-            var maladieChoices = document.getElementById("MaladiesToChoose").children;
-            for(let i = 0; i < maladieChoices.length; i++) {
-                console.log("looking at: " + maladieChoices[i].textContent);
-                if(maladieChoices[i].textContent == maladieToRemove.textContent) {
-                    maladieChoices[i].style.display="block";
-                }
+    function removeSelection(maladieToRemove) {
+        console.log("at removeSelection");
+        var maladieChoices = document.getElementById("MaladiesToChoose").children;
+        for(let i = 0; i < maladieChoices.length; i++) {
+            console.log("looking at: " + maladieChoices[i].textContent);
+            if(maladieChoices[i].textContent == maladieToRemove.textContent) {
+                maladieChoices[i].style.display="block";
             }
+        }
 
-            maladieToRemove.style.display="none";
-            
+        maladieToRemove.style.display="none";
+
             // var maladiesAppliedList = Array.from(document.getElementById("MaladiesToChoose").children).map;
 
             //for()
@@ -186,40 +192,40 @@
         function newElement() {
             if (inputValue == '') {
               alert("You must write something!");
-            } else {
-                var inputValue = document.getElementById("Search/Add To List").value;
-                
-                var li = createElementOfMaladie(inputValue);
-                
-                document.getElementById("MaladiesChosen").appendChild(li);
-            }
-            document.getElementById("Search/Add To List").value = "";
+          } else {
+            var inputValue = document.getElementById("Search/Add To List").value;
+
+            var li = createElementOfMaladie(inputValue);
+
+            document.getElementById("MaladiesChosen").appendChild(li);
         }
+        document.getElementById("Search/Add To List").value = "";
+    }
 
-        function createElementOfMaladie(maladieName) {
-            var li = document.createElement("li");
-            li.className = "list-group-item";
-            li.addEventListener("click", function() {
-                removeSelection(li);
-            });
-            li.textContent = maladieName
+    function createElementOfMaladie(maladieName) {
+        var li = document.createElement("li");
+        li.className = "list-group-item";
+        li.addEventListener("click", function() {
+            removeSelection(li);
+        });
+        li.textContent = maladieName
 
-            var childLI = document.createElement("input");
-            childLI.readonly;
-            childLI.className = "form-control";
-            childLI.type = "text";
-            childLI.value = maladieName;
-            childLI.setAttribute('readonly', true);
-            childLI.style.display="none";
+        var childLI = document.createElement("input");
+        childLI.readonly;
+        childLI.className = "form-control";
+        childLI.type = "text";
+        childLI.value = maladieName;
+        childLI.setAttribute('readonly', true);
+        childLI.style.display="none";
 
-            var maladiesChosenLength = document.getElementById("MaladiesChosen").children.length;
-            var maladiesText = "maladies: ";
-            childLI.id = maladiesText.concat(maladiesChosenLength);
-            childLI.name = maladiesText.concat(maladiesChosenLength); 
-            li.appendChild(childLI);
+        var maladiesChosenLength = document.getElementById("MaladiesChosen").children.length;
+        var maladiesText = "maladies: ";
+        childLI.id = maladiesText.concat(maladiesChosenLength);
+        childLI.name = maladiesText.concat(maladiesChosenLength); 
+        li.appendChild(childLI);
 
-            return li;
-        }        
-    </script>
+        return li;
+    }        
+</script>
 </body>
 </html>
