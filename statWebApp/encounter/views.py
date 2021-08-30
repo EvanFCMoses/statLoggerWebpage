@@ -17,10 +17,7 @@ def dataEntry(request):
 	logger = logging.getLogger('django')
 	if request.method == 'POST':
 		message = request.POST
-		savePost = SavePost(message)
-		logger.debug('fixify savePost.checkInput: ' + str(savePost.checkInput()))
-		logger.debug('fixify savePost.getMissinginfo: ' + str(savePost.getMissingEnteredData()))
-		logger.debug('fixify savePost.checkForMaladies: ' + str(savePost.checkForMaladies()))
+		savePost = SavePost(message, request.user.username)
 		if savePost.checkInput():
 			savePost.processAndSaveNewEntry()
 			return returnDataEntry(request)
@@ -59,9 +56,11 @@ class SavePost():
 
 	message = ""
 	minimumInput = ('gender', 'clinicLocation', 'priorPatient')
+	currentUser = ""
 
-	def __init__(self, message):
+	def __init__(self, message, currentUser):
 		self.message=message
+		self.currentUser=currentUser
 
 	def checkInput(self):
 		if len(self.getMissingEnteredData()) == 0:
@@ -77,8 +76,6 @@ class SavePost():
 
 	def processAndSaveNewEntry(self):
 		logger = logging.getLogger('django')
-
-		logger.debug('fixify saving the post')
 
 		encounter = Encounter()
 		encounter.save()
@@ -98,6 +95,7 @@ class SavePost():
 			elif "maladies" in key:
 				self.addDiagnosis(encounter, value)
 		encounter.date = date.today()
+		encounter.user = self.currentUser
 		encounter.save()
 
 	def checkForMaladies(self):

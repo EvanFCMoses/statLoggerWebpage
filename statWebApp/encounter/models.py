@@ -20,6 +20,7 @@ class Encounter(models.Model):
 	date = models.DateField(null=True)
 	notes = models.CharField(max_length = 1000, null=True)
 	test_indicator = models.BooleanField(default = False)
+	user = models.CharField(max_length = 24, null=True, blank=True)
 
 	def __str__(self):
 		str_name = ""

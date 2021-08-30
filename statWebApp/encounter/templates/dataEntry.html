@@ -11,8 +11,10 @@
     <link href="{% static "encounter/css/styles.css" %}" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css'%}">
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="{% static "jquery/jquery-3.6.0.min.js" %}"></script>
+    <script src="{% static "jquery/statloggerjquery.js" %}"></script>
+    
+<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script> -->
 </head>
 <body class="sb-nav-fixed">
     <div id="layoutSidenav_content">
@@ -26,7 +28,7 @@
             </h3>
         </div>
         {% endif %}
-        <form action="{% url 'dataEntry' %}" method="post">
+        <form id="dataEntry" action="{% url 'dataEntry' %}" method="post">
             {% csrf_token %}
             <div class="container-fluid">
                 <div class="d-flex justify-content-center mt-2 mb-2">
@@ -96,8 +98,8 @@
                         <div class="col-sm mb-1">
                             <div class="container-fluid mb-1">
                                 <label>Sort</label>
-                                <button class="btn btn-primary btn-sm">Name</button>
-                                <button class="btn btn-primary btn-sm">Freq</button>
+                                <button class="btn btn-primary btn-sm" id="sortMaladiesByName">Name</button>
+                                <button class="btn btn-primary btn-sm" id="sortMaladiesByFreq">Freq</button>
                             </div>
                             <ul class="list-group mb-2" name="MaladiesToChoose" id="MaladiesToChoose">
                                 {% if all_diseases %}
@@ -182,17 +184,13 @@
         }
 
         maladieToRemove.style.display="none";
-
-            // var maladiesAppliedList = Array.from(document.getElementById("MaladiesToChoose").children).map;
-
-            //for()
-        }
+    }
 
 
-        function newElement() {
-            if (inputValue == '') {
-              alert("You must write something!");
-          } else {
+    function newElement() {
+        if (inputValue == '') {
+            alert("You must write something!");
+        } else {
             var inputValue = document.getElementById("Search/Add To List").value;
 
             var li = createElementOfMaladie(inputValue);
