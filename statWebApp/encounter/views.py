@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
 from .models import Disease, Encounter, DiagnosisDiseaseGroupEntry
 from datetime import date
 import logging
@@ -29,7 +30,8 @@ def dataEntry(request):
 		return returnDataEntry(request)
 
 def returnDataEntry(request):
-	all_diseases = Disease.objects.all()
+	# all_diseases = Disease.objects.all()
+	all_diseases =  Disease.objects.values("disease_name").annotate(Count("diagnosisdiseasegroupentry")).order_by("-diagnosisdiseasegroupentry__count")[0:7]
 	context = {'all_diseases': all_diseases,}
 	return render(request, 'dataEntry.html', context)
 
