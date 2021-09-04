@@ -30,8 +30,7 @@ def dataEntry(request):
 		return returnDataEntry(request)
 
 def returnDataEntry(request):
-	# all_diseases = Disease.objects.all()
-	all_diseases =  Disease.objects.values("disease_name").annotate(Count("diagnosisdiseasegroupentry")).order_by("-diagnosisdiseasegroupentry__count")[0:7]
+	all_diseases =  Disease.objects.values("disease_name").annotate(Count("diagnosisdiseasegroupentry")).order_by("-diagnosisdiseasegroupentry__count")[0:10]
 	context = {'all_diseases': all_diseases,}
 	return render(request, 'dataEntry.html', context)
 
