@@ -35,7 +35,7 @@ def returnDataEntry(request):
 	return render(request, 'dataEntry.html', context)
 
 def returnDataEntryWithError(request, missingEnteredData):
-	all_diseases = Disease.objects.all()
+	all_diseases = Disease.objects.values("disease_name").annotate(Count("diagnosisdiseasegroupentry")).order_by("-diagnosisdiseasegroupentry__count")[0:10]
 	context = {
 	'all_diseases': all_diseases,
 	'incompleteDataEntered': missingEnteredData,
