@@ -10,7 +10,7 @@ class Disease(models.Model):
 
 
 class Encounter(models.Model):
-	age = models.IntegerField(null=True)
+	age = models.FloatField(null=True)
 	gender = models.CharField(max_length = 10, null=True)
 	priorPatientStatus = models.CharField(max_length = 12, null=True)
 	clinicLocation = models.CharField(max_length = 12, null=True)
