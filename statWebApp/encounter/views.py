@@ -84,7 +84,7 @@ class SavePost():
 			if key == "gender":
 				encounter.gender = str(value)
 			elif key == "patientAge":
-				encounter.age = int(value)
+				encounter.age = float(value)
 			elif key == "clinicLocation":
 				encounter.clinicLocation = str(value)
 			elif key == "priorPatient":
