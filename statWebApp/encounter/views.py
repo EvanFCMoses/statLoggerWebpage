@@ -87,10 +87,10 @@ class SavePost():
 				yearAndMonth = str(value)
 				if '.' in yearAndMonth:
 					yearAndMonth = yearAndMonth.split('.')
-					encounter.age = float(yearAndMonth[0])
+					encounter.age = int(yearAndMonth[0])
 					encounter.ageMonth = int(yearAndMonth[1])
 				else:
-					encounter.age = float(yearAndMonth)
+					encounter.age = int(yearAndMonth)
 			elif key == "clinicLocation":
 				encounter.clinicLocation = str(value)
 			elif key == "priorPatient":
