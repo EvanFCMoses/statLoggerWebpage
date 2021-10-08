@@ -84,7 +84,13 @@ class SavePost():
 			if key == "gender":
 				encounter.gender = str(value)
 			elif key == "patientAge":
-				encounter.age = float(value)
+				yearAndMonth = str(value)
+				if '.' in yearAndMonth:
+					yearAndMonth = yearAndMonth.split('.')
+					encounter.age = float(yearAndMonth[0])
+					encounter.ageMonth = int(yearAndMonth[1])
+				else:
+					encounter.age = float(yearAndMonth)
 			elif key == "clinicLocation":
 				encounter.clinicLocation = str(value)
 			elif key == "priorPatient":
