@@ -15,12 +15,12 @@ class Encounter(models.Model):
 	gender = models.CharField(max_length = 10, null=True)
 	priorPatientStatus = models.CharField(max_length = 12, null=True)
 	clinicLocation = models.CharField(max_length = 12, null=True)
-	rolePlayed = models.CharField(max_length = 12, null=True)
+	rolePlayed = models.CharField(max_length = 12, null=True, blank=True)
 	latitude = models.IntegerField(null=True, blank=True)
 	longitude = models.IntegerField(null=True, blank=True)
 	date = models.DateField(null=True)
-	notes = models.CharField(max_length = 1000, null=True)
-	test_indicator = models.BooleanField(default = False)
+	notes = models.CharField(max_length = 1000, null=True, blank=True)
+	test_indicator = models.BooleanField(default = False, blank=True)
 	user = models.CharField(max_length = 24, null=True, blank=True)
 
 	def __str__(self):
