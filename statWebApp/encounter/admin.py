@@ -10,6 +10,7 @@ class EncounterAdmin(admin.ModelAdmin):
 	readonly_fields = ('id',)
 
 	inlines = [DiseaseInline]
+	list_filter = ("user", "date")
 
 
 admin.site.register(Encounter, EncounterAdmin)
