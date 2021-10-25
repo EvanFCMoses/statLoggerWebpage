@@ -188,11 +188,8 @@
 
 
     function newElement() {
-        if (inputValue == '') {
-            alert("You must write something!");
-        } else {
-            var inputValue = document.getElementById("Search/Add To List").value;
-
+        var inputValue = document.getElementById("Search/Add To List").value;
+        if (inputValue != '') {
             var li = createElementOfMaladie(inputValue);
 
             document.getElementById("MaladiesChosen").appendChild(li);
